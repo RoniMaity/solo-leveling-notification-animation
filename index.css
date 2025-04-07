@@ -134,8 +134,8 @@ html {
   height: 50%;
   background: linear-gradient(
     to bottom,
-    #02233a 30%,
-    #000000 60%
+    rgba(0,123, 255, 0.5) 20%,
+    #000000 80%
   ); /* Split color between blue and yellow */
   will-change: transform;
   transition: transform 0.2s ease-out;
@@ -146,8 +146,8 @@ html {
   height: 50%;
   background: linear-gradient(
     to bottom,
-    #000000 30%,
-    #02233a 60%
+    #000000 20%,
+    rgba(0,123, 255, 0.5) 80%
   ); /* Split color between blue and yellow */
   will-change: transform;
   transition: transform 0.2s ease-out;
