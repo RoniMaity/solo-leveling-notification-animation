@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Update the content class to start without borders */
+.content {
+  position: relative;
+  width: 700px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-animation: addBorders 0.2s ease-out 1.1s forwards;
+  animation: addBorders 0.2s ease-out 1.1s forwards;
+  /* animation: glow 1.5s ease-in-out infinite alternate; */
+}
+.glow {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #007bff, 0 0 40px #007bff;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #007bff, 0 0 20px #007bff;
+  }
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #007bff,
+      0 0 40px #007bff, 0 0 50px #007bff;
+  }
+}
+.icon-exclamation {
+  display: inline-block;
+  margin-right: 10px;
+  text-shadow: 0px 0px 15px #007bff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #000000;
+  color: #fff; /* White exclamation mark color */
+  text-align: center;
+  line-height: 50px; /* Vertically center the exclamation mark */
+  font-size: 1.5em;
+  box-shadow: 0 0 10px #007bff; /* Neon glow effect */
+}
+
+/* Update text animation to start after scaling and splitting */
+.notification-container {
+  color: #fff;
+  text-shadow: 0px 0px 10px blue; /* Neon glow effect */
+  height: 350px;
+  width: 650px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  padding: 20px 40px;
+  gap: 60px;
+  border-radius: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  transform: translateY(20px);
+  animation: notificationIn 0.5s ease-out 2s forwards; /* Added 2s delay */
+}
+
+.notification-container h1 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.8rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.notification-text {
+  display: inline-block;
+  margin-right: 10px;
+  text-shadow: 0px 0px 15px #007bff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  /* border-radius: 50%; */
+  background-color: #000000;
+  color: #fff; /* White exclamation mark color */
+  text-align: center;
+  line-height: 30px; /* Vertically center the exclamation mark */
+  font-size: 1.3em;
+  box-shadow: 0 0 10px #007bff;
+}
+/* Update container to maintain position */
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute; /* Changed to absolute */
+  top: 0; /* Position at top */
+  left: 0; /* Position at left */
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Update top and bottom panels */
+.bottom {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    #02233a 30%,
+    #000000 60%
+  ); /* Split color between blue and yellow */
+  will-change: transform;
+  transition: transform 0.2s ease-out;
+}
+.top {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    #000000 30%,
+    #02233a 60%
+  ); /* Split color between blue and yellow */
+  will-change: transform;
+  transition: transform 0.2s ease-out;
+}
+
+/* Keep other properties the same */
+.top {
+  top: 0;
+  animation: openTop 0.3s ease-out 1s forwards;
+}
+
+.bottom {
+  bottom: 0;
+  animation: openBottom 0.3s ease-out 1s forwards;
+}
+
+@keyframes openTop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes openBottom {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+/* Add scale up animation */
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes notificationIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Add new animation for borders */
+@keyframes addBorders {
+  from {
+    border-top: 0px solid #02233a;
+    border-bottom: 0px solid #02233a;
+  }
+  to {
+    border-top: 50px solid rgba(0,123, 255, 0.5);
+    border-bottom: 50px solid rgba(0, 123, 255, 0.5);
+  }
+}
+
+.notification-message {
+  margin-top: 20px;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+
+.notification-message p {
+  margin: 5px 0;
+}
+
+.checkmark {
+  width: 30px;
+  height: 30px;
+  /* border-radius: 50%; */
+  display: inline-block;
+  position: relative;
+  background: #000;
+  border: 2px solid #007bff;
+  box-shadow: 0 0 10px #007bff;
+  animation: checkmarkGlow 1.5s ease-in-out infinite alternate;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 23%;
+  width: 15px;
+  height: 8px;
+  border-left: 2px solid #00ff15;
+  border-bottom: 2px solid #00ff15;
+  transform: rotate(-45deg);
+  /* box-shadow: 0 0 5px #007bff; */
+}
+
+@keyframes checkmarkGlow {
+  from {
+    box-shadow: 0 0 5px #007bff, 0 0 10px #007bff;
+  }
+  to {
+    box-shadow: 0 0 15px #007bff, 0 0 20px #007bff, 0 0 25px #007bff;
+  }
+}
